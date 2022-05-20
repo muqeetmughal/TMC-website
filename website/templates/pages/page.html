@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'layouts/breadcrumb.html' %}
+
+<section class="wrapper bg-light">
+    <div class="container py-14 py-md-16">
+        {{page.content|safe}}
+    </div>
+    <!-- /.container -->
+  </section>
+
+{% endblock content %}

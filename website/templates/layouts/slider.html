@@ -1,0 +1,192 @@
+{% if slider|length != 0 %}
+
+
+<div class="hero-slider-wrapper bg-dark">
+    <div class="hero-slider owl-carousel dots-over owl-loaded owl-drag" data-nav="true" data-dots="true"
+    data-autoplay="true">
+    <!--/.owl-slide -->
+    
+    <!--/.owl-slide -->
+    
+    <!--/.owl-slide -->
+    <div class="owl-stage-outer">
+        <div class="owl-stage" style="
+        transform: translate3d(0px, 0px, 0px);
+        transition: all 0s ease 0s;
+        width: 2304px;">
+        
+        
+        {% for slide in slider %}
+        
+        {% if slide.is_video %}
+        
+        <div class="owl-item" style="width: 751px">
+            <div
+            class="owl-slide d-flex align-items-center{% if slide.headline %}bg-overlay bg-overlay-400{% endif %}"
+            style="background-image: url({{slide.image.url}})"
+            >
+            {% if slide.headline %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-11 col-lg-8 col-xl-7 col-xxl-6 mx-auto text-center">
+                        <h2
+                        class="display-1 fs-56 mb-4 text-white animated-caption"
+                        data-anim="animate__slideInDown"
+                        data-anim-delay="500"
+                        style="animation-delay: 500ms"
+                        >
+                        {{slide.headline}}
+                    </h2>
+                    <p
+                    class="lead fs-23 lh-sm mb-7 text-white animated-caption"
+                    data-anim="animate__slideInRight"
+                    data-anim-delay="1000"
+                    style="animation-delay: 1000ms"
+                    >
+                    {{slide.details}}
+                </p>
+                                    <div
+                                    class="animated-caption"
+                                    data-anim="animate__slideInUp"
+                                    data-anim-delay="1500"
+                                    style="animation-delay: 1500ms"
+                                    >
+                                    <a
+                                    href={{slide.video.url}}
+                                    class="btn btn-circle btn-white btn-play ripple mx-auto mb-5"
+                                    data-glightbox=""
+                                    ><i class="icn-caret-right"></i
+                                        ></a>
+                                    </div>
+                                </div>
+                                <!--/column -->
+                            </div>
+                            <!--/.row -->
+                        </div>
+                        {% endif %}
+                        <!--/.container -->
+                    </div>
+                </div>
+                
+                
+                {% else %}
+                
+                {% if slide.content_position == "left" %}
+                <div
+                class="owl-item animated owl-animated-in fadeIn"
+                style="width: 645px"
+                >
+                <div
+                class="owl-slide d-flex align-items-center {% if slide.headline %}bg-overlay bg-overlay-400{% endif %}"
+                style="background-image: url({{slide.image.url}})"
+                >
+                {% if slide.headline %}
+                <div class="container">
+                    <div class="row">
+                        <div
+                        class="col-md-10 offset-md-1 col-lg-7 offset-lg-0 col-xl-6 col-xxl-5 text-center text-lg-start"
+                        >
+                        <h2
+                        class="display-1 fs-56 mb-4 text-white animated-caption animate__animated animate__slideInDown"
+                        data-anim="animate__slideInDown"
+                        data-anim-delay="500"
+                        style="animation-delay: 500ms"
+                        >
+                        {{slide.headline}}
+                    </h2>
+                    <p
+                    class="lead fs-23 lh-sm mb-7 text-white animated-caption animate__animated animate__slideInRight"
+                    data-anim="animate__slideInRight"
+                    data-anim-delay="1000"
+                    style="animation-delay: 1000ms"
+                    >
+                    {{slide.details}}
+                </p>
+                
+                {% if slide.action_url or slide.action_text%}
+                <div
+                class="animated-caption animate__animated animate__slideInUp"
+                data-anim="animate__slideInUp"
+                data-anim-delay="1500"
+                style="animation-delay: 1500ms"
+                >
+                <a href="{{slide.action_url}}" class="btn btn-lg btn-outline-white rounded-pill"
+                >{{slide.action_text}}</a
+                >
+            </div>
+            {% endif %}
+        </div>
+        <!--/column -->
+    </div>
+    <!--/.row -->
+</div>
+{% endif %}
+<!--/.container -->
+</div>
+</div>
+
+{% elif slide.content_position == "right" %}
+
+<div class="owl-item animated owl-animated-in fadeIn" style="width: 768px">
+    <div class="owl-slide d-flex align-items-center {% if slide.headline %}bg-overlay bg-overlay-400{% endif %}"
+    style="background-image: url({{slide.image.url}})">
+    
+    {% if slide.headline %}
+    <div class="container">
+        <div class="row">
+            <div
+            class="col-md-10 offset-md-1 col-lg-7 offset-lg-5 col-xl-6 offset-xl-6 col-xxl-5 offset-xxl-6 text-center text-lg-start">
+            <h2 class="display-1 fs-56 mb-4 text-white animated-caption"
+            data-anim="animate__slideInDown" data-anim-delay="500"
+            style="animation-delay: 500ms">
+            {{slide.headline}}
+        </h2>
+        <p class="lead fs-23 lh-sm mb-7 text-white animated-caption"
+        data-anim="animate__slideInRight" data-anim-delay="1000"
+                                                style="animation-delay: 1000ms">
+                                                {{slide.details}}
+                                            </p>
+                                            
+                                            {% if slide.action_url or slide.action_text%}
+                                            <div class="animated-caption" data-anim="animate__slideInUp" data-anim-delay="1500" style="animation-delay: 1500ms">
+                                                <a href="{{slide.action_url}}" class="btn btn-lg btn-outline-white rounded-pill">{{slide.action_text}}</a>
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                        <!--/column -->
+                                    </div>
+                                    <!--/.row -->
+                                </div>
+                                {% endif %}
+                                <!--/.container -->
+                            </div>
+                        </div>
+                        
+                        {% endif %}
+                        
+                        {% endif %}
+                        
+                        
+                        {% endfor %}
+                    </div>
+                </div>
+        <div class="owl-nav">
+            <button type="button" role="presentation" class="owl-prev">
+                <i class="uil-arrow-left"></i></button><button type="button" role="presentation" class="owl-next">
+                <i class="uil-arrow-right"></i>
+            </button>
+        </div>
+        <div class="owl-dots">
+            
+            {% for slide in slider %}
+            
+            <button role="button" class="owl-dot">
+                <span></span>
+            </button>
+            
+            {% endfor %}
+        </div>
+    </div>
+    <!--/.hero-slider -->
+</div>
+{% endif %}

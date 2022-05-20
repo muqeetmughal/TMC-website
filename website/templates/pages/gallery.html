@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+
+    {% include 'layouts/breadcrumb.html' %}
+
+      <section class="wrapper bg-light">
+        <div class="container py-14 py-md-16">
+          <div class="grid grid-view projects-masonry">
+            <div class="isotope-filter filter mb-10">
+              <p>Filter:</p>
+              <ul>
+                <li><a class="filter-item active" data-filter="*">All</a></li>
+                <li><a class="filter-item" data-filter=".video">Videos</a></li>
+                <li><a class="filter-item" data-filter=".image">Images</a></li>
+              </ul>
+            </div>
+            <div class="row gx-md-10 gy-10 gy-md-13 isotope" style="position: relative; height: 3351.47px;">
+                {% for item in gallery %}
+                    {% if item.video and item.image %}
+                        <div class="project item col-md-6 video" style="position: absolute; left: 50%; top: 774.625px;">
+                                
+                            <div
+                            class="position-relative"
+                            data-cue="slideInDown"
+                            data-show="true"
+                            style="
+                                animation-name: slideInDown;
+                                animation-duration: 700ms;
+                                animation-timing-function: ease;
+                                animation-delay: 0ms;
+                                animation-direction: normal;
+                                animation-fill-mode: both;
+                            "
+                            >
+                            <a
+                                href="{{item.video.url}}"
+                                class="btn btn-circle btn-primary btn-play ripple mx-auto mb-6 position-absolute"
+                                style="top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 3"
+                                data-glightbox=""
+                                ><i class="icn-caret-right"></i
+                            ></a>
+                            <figure class="rounded shadow-lg">
+                                <img
+                                src={{item.image.url}}
+                                srcset={{item.image.url}}
+                                alt=""
+                                />
+                            </figure>
+                            </div>
+            
+                        </div>
+                    {%elif item.image and not item.video %}
+                    <div class="project item col-md-6 image" style="position: absolute; left: 50%; top: 774.625px;">
+                        <figure class="itooltip itooltip-light hover-scale rounded" title="<h5 class=&quot;mb-0&quot;>Cursus Inceptos Sit</h5>"><a href={{item.image.url}} data-glightbox="title: Cursus Inceptos Sit" data-gallery="project-1"> <img src={{item.image.url}} alt=""></a>
+                        </figure>
+                    </div>
+                    {% endif %}          
+                    
+              {% endfor %}
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.grid -->
+        </div>
+        <!-- /.container -->
+      </section>
+
+
+
+{% endblock content %}

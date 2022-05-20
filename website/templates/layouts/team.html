@@ -1,0 +1,78 @@
+{% load static %}
+
+{% if team|length >= 1 %}
+<section class="wrapper bg-gradient-primary angled upper-end lower-end">
+  <div class="container py-14 pt-md-16 pb-md-18 ">
+    <div class="position-relative mt-lg-n23 mt-xl-n25">
+      <div class="row text-center">
+        <div class="col-lg-6 mx-auto">
+          <h3 class="fs-26 text-uppercase text-muted mb-3">Our Team</h3>
+          {% comment %} <h3 class="display-4 mb-10">
+            Think unique and be innovative. Make a difference with Sandbox.
+          </h3> {% endcomment %}
+        </div>
+        <!-- /column -->
+      </div>
+      <!-- /.row -->
+      <div class="position-relative">
+        <div
+          class="shape bg-dot blue rellax w-16 h-17"
+          data-rellax-speed="1"
+          style="bottom: 0.5rem; right: -1.7rem; z-index: 0"
+        ></div>
+        <div
+          class="shape rounded-circle bg-line red rellax w-16 h-16"
+          data-rellax-speed="1"
+          style="top: 0.5rem; left: -1.7rem; z-index: 0"
+        ></div>
+        <div class="row grid-view gy-6 gy-xl-0">
+            <div class="carousel owl-carousel gap-small" data-margin="0" data-dots="true" data-autoplay="false" data-autoplay-timeout="5000" data-responsive='{"0":{"items": "1"}, "768":{"items": "2"}, "992":{"items": "3"}, "1400":{"items": "4"}}'>
+                {% for member in team %}
+                    <div class="item">
+                    <div class="item-inner">
+                        <div class="card">
+                        <div class="card-body">
+                            
+                            <img class="rounded-circle w-15 mb-4" src={{member.image.url}} alt="" />
+                            <h4 class="mb-1">{{member.name}}</h4>
+                            <div class="meta mb-2">{{member.designation}}</div>
+                            <p class="mb-2">
+                              {{member.about}}
+                            </p>
+                            <nav class="nav social mb-0">
+                                {% if member.twitter %}
+                                     <a href={{member.twitter}}><i class="uil uil-twitter"></i></a>
+                                {% endif %}
+                                {% if member.facebook %}
+                                    <a href="#"><i class="uil uil-facebook-f"></i></a>
+                                {% endif %}
+                                {% if member.dribble %}
+                                    <a href="#"><i class="uil uil-dribbble"></i></a>
+                                {% endif %}
+                              
+                              
+                            </nav>
+                            <!-- /.social -->
+                          
+                        </div>
+                        <!--/.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.item-inner -->
+                    </div>
+                {% endfor %}
+                
+            </div>
+        </div>
+        <!--/.row -->
+      </div>
+      <!-- /.position-relative -->
+    </div>
+    <!-- /div -->
+  </div>
+  <!-- /.container -->
+</section>
+{% endif %}
+
+

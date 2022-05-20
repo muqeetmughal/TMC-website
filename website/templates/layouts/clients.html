@@ -1,0 +1,14 @@
+<section class="wrapper bg-light wrapper-border">
+    <div class="container py-14 py-md-16">
+      <h2 class="fs-15 text-uppercase text-muted text-center mb-8">Trusted by Over 5000 Clients</h2>
+      <div class="carousel owl-carousel clients mb-0" data-margin="30" data-loop="true" data-dots="false" data-autoplay="true" data-autoplay-timeout="3000" data-responsive='{"0":{"items": "2"}, "768":{"items": "4"}, "992":{"items": "5"}, "1200":{"items": "6"}, "1400":{"items": "7"}}'>
+        {% for client in clients %}
+            <div class="item px-5"><img src="{{client.logo.url}}" alt="" /></div>
+            
+        {% endfor %}
+      </div>
+      <!-- /.owl-carousel -->
+    </div>
+    <!-- /.container -->
+  </section>
+  <!-- /section -->
