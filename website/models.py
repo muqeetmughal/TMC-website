@@ -1,3 +1,4 @@
+from cProfile import label
 from distutils.command.upload import upload
 from django.db import models
 from django.utils.text import slugify
@@ -5,6 +6,7 @@ from django.urls import reverse
 # Create your models here.
 from django.contrib.auth.models import AbstractUser
 from ckeditor.fields import RichTextField
+from enum import Enum
 
 
 class User(AbstractUser):
@@ -133,3 +135,34 @@ class Team(models.Model):
 # class MenuPage(models.Model):
 #     pages = models.ManyToManyField(Page)
 
+class JobApplication(models.Model):
+
+    class MaritalStatus(models.TextChoices):
+
+        single = "single", "Single"
+        married = "married", "Married"
+
+    name = models.CharField(max_length=100, null=False, blank=False)
+    age = models.CharField(max_length=3, null=True, blank=True)
+    marital_status = models.CharField(
+        max_length=15, null=True, blank=True, choices=MaritalStatus.choices)
+
+    eduction_highest = models.CharField(
+        "Education Highest", max_length=255, null=True, blank=True)
+    eduction_second_highest = models.CharField(
+        "Education Second Highest", max_length=255, null=True, blank=True)
+
+    employer_1 = models.CharField(max_length=100, null=True, blank=True)
+    designation_1 = models.CharField(max_length=100, null=True, blank=True)
+    experience_1 = models.TextField(null=True, blank=True)
+
+    employer_2 = models.CharField(max_length=100, null=True, blank=True)
+    designation_2 = models.CharField(max_length=100, null=True, blank=True)
+    experience_2 = models.TextField(null=True, blank=True)
+
+    employer_3 = models.CharField(max_length=100, null=True, blank=True)
+    designation_3 = models.CharField(max_length=100, null=True, blank=True)
+    experience_3 = models.TextField(null=True, blank=True)
+
+    audio = models.FileField(upload_to='applications/audio/', blank=True, null=True)
+    cv = models.FileField(upload_to='applications/resumes/', blank=True, null=True)

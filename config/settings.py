@@ -66,25 +66,30 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-#server mysql
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'themejorcommunications',
-        'USER': 'dbuser',
-        'PASSWORD': 'ABCDEF1@3456',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-#local mysql
-#DATABASES = {
+
+
+# server mysql
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'themejorcommunications',
+#         'USER': 'dbuser',
+#         'PASSWORD': 'ABCDEF1@3456',
+#         'HOST': 'localhost',
+#         'PORT': '3306',
+#     }
+# }
+
+
+# local mysql
+# DATABASES = {
 #    'default': {
 #        'ENGINE': 'django.db.backends.mysql',
 #        'NAME': 'tmc_website',
@@ -93,7 +98,7 @@ DATABASES = {
 #        'HOST': 'localhost',
 #        'PORT': '3307',
 #    }
-#}
+# }
 
 
 # Password validation
@@ -163,3 +168,4 @@ CKEDITOR_UPLOAD_PATH = "uploads/"
 #         'entities', 'file', 'font_family', 'font_size', 'fullscreen', 'image_manager', 'image', 'inline_style',
 #         'line_breaker', 'link', 'lists', 'paragraph_format', 'paragraph_style', 'quick_insert', 'quote', 'save', 'table',
 #         'url', 'video')
+APPEND_SLASH = False

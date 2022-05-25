@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib import messages
 from .models import Clients, Gallery, Page, Settings, Slider, Team
-from .forms import ContactForm, NewsletterForm
+from .forms import ContactForm, JobApplicationForm, NewsletterForm
 # Create your views here.
 
 
@@ -29,16 +29,16 @@ def home(request):
 
 def about(request):
     context = {}
-    query = Settings.objects.get(key="about_background")
+    # query = Settings.objects.get(key="about_background")
     team = Team.objects.all()
     context['page_heading'] = "About TMC"
     context['parent_page'] = "Home"
     context['child_page'] = "About"
     context['team'] = team
-    try:
-        context['about_background'] = query.image.url
-    except ValueError:
-        context['about_background'] = ""
+    # try:
+    #     context['about_background'] = query.image.url
+    # except ValueError:
+    #     context['about_background'] = ""
     return render(request, "pages/about.html", context)
 
 
@@ -61,6 +61,39 @@ def careers(request):
     context['child_page'] = "Careers"
 
     return render(request, "pages/careers.html", context)
+
+
+def apply(request):
+    context = {}
+    context['page_heading'] = "Apply for Job in TMC"
+    context['parent_page'] = "Careers"
+    context['child_page'] = "Apply Now"
+
+    context['form'] = JobApplicationForm
+
+    if request.method == "POST":
+
+        form = JobApplicationForm(request.POST, request.FILES)
+
+        uploaded_file = request.FILES
+
+        print("File",uploaded_file)
+
+        print(form.data)
+        if form.is_valid():
+
+            print("Form", form)
+            form.save()
+            messages.success(
+                request, 'Thanks for contacting us we will respond you soon!!')
+
+            return redirect("apply")
+        else:
+            messages.error(request, 'Sorry please check your form again!')
+
+            return redirect("apply")
+
+    return render(request, "pages/apply.html", context)
 
 
 def contact(request):

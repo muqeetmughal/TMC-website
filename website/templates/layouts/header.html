@@ -25,10 +25,13 @@
         <!-- /.navbar-collapse -->
         <div class="navbar-other w-100 d-flex ms-auto">
           <ul class="navbar-nav flex-row align-items-center ms-auto" data-sm-skip="true">
-
+            
+            <li class="nav-item d-none d-md-block">
+              <a href={% url 'apply' %} class="btn btn-sm btn-primary rounded-pill">Apply Now</a>
+            </li>
             {% if request.user.is_superuser %}
             <li class="nav-item d-none d-md-block">
-                <a href="/admin" class="btn btn-sm btn-primary rounded-pill">Admin</a>
+                <a href="/admin" class="btn btn-sm btn-danger rounded-pill">Admin</a>
               </li>
               {% endif %}
             <li class="nav-item"><a class="nav-link" data-toggle="offcanvas-info"><i class="uil uil-info-circle"></i></a></li>

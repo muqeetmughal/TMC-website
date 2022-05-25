@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Contact, Gallery, Newsletter, Page, Settings, Clients, Slider, Team, User
+from .models import Contact, Gallery, JobApplication, Newsletter, Page, Settings, Clients, Slider, Team, User
 # Register your models here.
 
 
@@ -16,5 +16,6 @@ admin.site.register(Clients)
 admin.site.register(Slider)
 admin.site.register(Page)
 admin.site.register(Team)
+admin.site.register(JobApplication)
 # admin.site.register(MenuPage)
 # admin.site.register(Menu)
