@@ -24,7 +24,7 @@ class NewsletterForm(forms.ModelForm):
 
 class JobApplicationForm(forms.ModelForm):
     name = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'form-control', 'id': 'name'}), required=True)
+        attrs={'class': 'form-control', 'id': 'name'}), required=False)
     age = forms.CharField(widget=forms.TextInput(
         attrs={'class': 'form-control', 'id': 'age'}), required=False)
 
@@ -56,7 +56,7 @@ class JobApplicationForm(forms.ModelForm):
         attrs={'class': 'form-control', 'id': 'experience_3'}), required=False)
 
     cv = forms.FileField(widget=forms.FileInput(
-        attrs={'class': 'form-control', 'id': 'cv'}), required=False)
+        attrs={'class': 'form-control', 'id': 'cv','accept':".pdf,.docx, .doc, .rtf"}), required=True)
 
     audio = forms.FileField(widget=forms.FileInput(
         attrs={'class': 'form-control', 'id': 'audio'}), required=False)

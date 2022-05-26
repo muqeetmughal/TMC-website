@@ -142,7 +142,7 @@ class JobApplication(models.Model):
         single = "single", "Single"
         married = "married", "Married"
 
-    name = models.CharField(max_length=100, null=False, blank=False)
+    name = models.CharField(max_length=100, null=True, blank=True)
     age = models.CharField(max_length=3, null=True, blank=True)
     marital_status = models.CharField(
         max_length=15, null=True, blank=True, choices=MaritalStatus.choices)
@@ -165,4 +165,4 @@ class JobApplication(models.Model):
     experience_3 = models.TextField(null=True, blank=True)
 
     audio = models.FileField(upload_to='applications/audio/', blank=True, null=True)
-    cv = models.FileField(upload_to='applications/resumes/', blank=True, null=True)
+    cv = models.FileField(upload_to='applications/resumes/', blank=False, null=False)

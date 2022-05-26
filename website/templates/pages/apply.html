@@ -1,4 +1,5 @@
-{% extends 'base.html' %} {% load static %}
+{% extends 'base.html' %}
+{% load static %}
 {% block content %}
 {% include 'layouts/breadcrumb.html' %}
 
@@ -193,5 +194,23 @@
     <!-- /column -->
   </div>
 </div>
+
+{% comment %} <script>
+  var file = document.getElementById('cv');
+
+  file.onchange = function(e) {
+    var ext = this.value.match(/\.([^\.]+)$/)[1];
+    switch (ext) {
+      case 'pdf':
+      case 'doc':
+      case 'docs':
+      case 'docx':
+        break;
+      default:
+        alert('This file is not allowed');
+        this.value = '';
+    }
+  };
+</script> {% endcomment %}
 
 {% endblock content %}
